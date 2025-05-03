@@ -11,7 +11,6 @@ connection_check_string = ""
 
 from flask import request
 
-db_settings = "dbname=neondb user=neondb_owner password=npg_IEzM"+passkey+" host=ep-tiny-dew-a1ty1ixg-pooler.ap-southeast-1.aws.neon.tech port=5432"
 def execute_select_one(sql: str, passkey: str):
   try:
     conn = psycopg.connect("dbname=neondb user=neondb_owner password=npg_IEzM"+passkey+" host=ep-tiny-dew-a1ty1ixg-pooler.ap-southeast-1.aws.neon.tech port=5432", row_factory=dict_row)
