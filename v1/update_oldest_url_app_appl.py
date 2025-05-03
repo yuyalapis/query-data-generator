@@ -34,8 +34,10 @@ def execute_select_all(sql: str, passkey: str):
     cur = conn.cursor()
 
     cur.execute(sql)
+    result = cur.fetchall()
 
-    return cur.fetchall()
+    print(result)
+    return result
 
   except Exception as ex:
     return ex
