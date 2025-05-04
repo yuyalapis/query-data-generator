@@ -155,7 +155,7 @@ def update_oldest_url_app_appl(passkey):
   return {"status": 202, "url": url}
 
 if __name__ == "__main__":
-  passkey = PAsSKEY
+  passkey = PASSKEY
   # passkey = sys.argv[1].strip()
   print(len(passkey) * "*")
   while True:
