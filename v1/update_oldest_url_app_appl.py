@@ -1,10 +1,8 @@
 import os
-from os.path import join, dirname
 from dotenv import load_dotenv
-
 load_dotenv()
 
-PASSKEY = os.environ.get("PASSKEY")
+PASSKEY = os.getenv('PASSKEY')
 
 import sys
 from flask import Flask
