@@ -1,0 +1,13 @@
+[Unit]
+Description=flask_based_data_generator
+After=syslog.target network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node /home/ec2-user/.pyenv/versions/3.12.0/bin/python /home/ec2-user/query-data-generator/v1/update_oldest_url_app_appl.py
+WorkingDirectory=/home/ec2-user
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
