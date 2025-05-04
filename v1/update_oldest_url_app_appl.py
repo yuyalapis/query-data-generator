@@ -1,3 +1,11 @@
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
+
+load_dotenv()
+
+PASSKEY = os.environ.get("PASSKEY")
+
 import sys
 from flask import Flask
 
@@ -147,7 +155,8 @@ def update_oldest_url_app_appl(passkey):
   return {"status": 202, "url": url}
 
 if __name__ == "__main__":
-  passkey = sys.argv[1].strip()
+  passkey = PAsSKEY
+  # passkey = sys.argv[1].strip()
   print(len(passkey) * "*")
   while True:
     result = update_oldest_url_app_appl(passkey)
