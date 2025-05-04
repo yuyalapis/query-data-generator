@@ -75,7 +75,10 @@ def get_url_data(url):
   html     = response.text
   soup     = BeautifulSoup(html, 'html.parser')
 
-  soup_title_appl = soup.find_all("h1")[0].text
+  all_h1 = soup.find_all("h1")
+  if not all_h1:
+    return None
+  soup_title_appl = all_h1[0].text
   for i in range(len(soup_title_appl)):
     if soup_title_appl[i] not in [" ", "\n"]:
       title = soup_title_appl[i:]
@@ -142,6 +145,8 @@ def update_oldest_url_app_appl(passkey):
 
     if url.startswith("https://apps.apple.com/jp/app/"):
       response = get_url_data(url)
+      if not response:
+        continue
       update_description(url, response["title"], response["text"], passkey)
       hrefs = response["hrefs"]
 
