@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 PASSKEY = os.getenv('PASSKEY')
+HOST_KEY = os.getenv('HOST_KEY')
 
 import sys
 from flask import Flask
@@ -19,7 +20,7 @@ from flask import request
 
 def execute_select_one(sql: str, passkey: str):
   try:
-    conn = psycopg.connect("dbname=neondb user=neondb_owner password=npg_IEzM"+passkey+" host=ep-tiny-dew-a1ty1ixg-pooler.ap-southeast-1.aws.neon.tech port=5432", row_factory=dict_row)
+    conn = psycopg.connect("dbname=neondb user=neondb_owner password=npg_IEzM"+passkey+" host=ep-tiny-dew-a1t"+HOST_KEY+"-pooler.ap-southeast-1.aws.neon.tech port=5432", row_factory=dict_row)
     cur = conn.cursor()
 
     cur.execute(sql)
@@ -36,7 +37,7 @@ def execute_select_one(sql: str, passkey: str):
 
 def execute_select_all(sql: str, passkey: str):
   try:
-    conn = psycopg.connect("dbname=neondb user=neondb_owner password=npg_IEzM"+passkey+" host=ep-tiny-dew-a1ty1ixg-pooler.ap-southeast-1.aws.neon.tech port=5432", row_factory=dict_row)
+    conn = psycopg.connect("dbname=neondb user=neondb_owner password=npg_IEzM"+passkey+" host=ep-tiny-dew-a1t"+HOST_KEY+"-pooler.ap-southeast-1.aws.neon.tech port=5432", row_factory=dict_row)
     cur = conn.cursor()
 
     cur.execute(sql)
@@ -55,7 +56,7 @@ def execute_select_all(sql: str, passkey: str):
 
 def execute_modify(sql: str, passkey: str):
   try:
-    conn = psycopg.connect("dbname=neondb user=neondb_owner password=npg_IEzM"+passkey+" host=ep-tiny-dew-a1ty1ixg-pooler.ap-southeast-1.aws.neon.tech port=5432")
+    conn = psycopg.connect("dbname=neondb user=neondb_owner password=npg_IEzM"+passkey+" host=ep-tiny-dew-a1t"+HOST_KEY+"-pooler.ap-southeast-1.aws.neon.tech port=5432")
     cur = conn.cursor()
 
     cur.execute(sql)
