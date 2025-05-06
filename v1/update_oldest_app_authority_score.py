@@ -77,7 +77,7 @@ def save_oldest_app_authority_score():
   url = execute_select_one("select url from url_app_appl order by updated_at asc limit 1")
   current_date = datetime.datetime.now().date()
   print(current_date)
-  app_score_log = execute_select_one(f"select * from app_authority_score_logs where saved_at = '{current_date}' and url = '{url}'")
+  app_score_log = execute_select_one(f"select * from app_authority_score_logs where saved_at = '{current_date}' and url_to = '{url}'")
   print(app_score_log)
   if not app_score_log:
     print("generating app_authority_score_logs")
