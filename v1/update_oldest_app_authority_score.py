@@ -83,7 +83,7 @@ def save_oldest_app_authority_score():
   print(app_score_log)
   if not app_score_log:
     print("generating app_authority_score_logs")
-    top_app_score_dict = execute_select_one("select url_to, count(url_from) as score from url_app_appl_suggested group by url_to order by score desc limit 1")
+    top_app_score_dict = execute_select_one("select url_to, count(url_from) as score from url_app_appl_suggested group by url_to order by score desc")
     target_app_score_dict = execute_select_one(f"select url_to, count(url_from) as score from url_app_appl_suggested group by url_to where url_to = '{url}'")
     target_app_score = target_app_score_dict["app_authority_score"] / top_app_score_dict["app_authority_score"]
     print(target_app_score)
