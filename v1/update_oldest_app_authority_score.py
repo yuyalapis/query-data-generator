@@ -74,7 +74,9 @@ def execute_modify(sql: str):
       conn.close()
 
 def save_oldest_app_authority_score():
-  url = execute_select_one("select url from url_app_appl order by updated_at asc limit 1")
+  url_dict = execute_select_one("select url from url_app_appl order by updated_at asc limit 1")
+  url = url_dict["url"]
+  print(url)
   current_date = datetime.datetime.now().date()
   print(current_date)
   app_score_log = execute_select_one(f"select * from app_authority_score_logs where saved_at = '{current_date}' and url_to = '{url}'")
