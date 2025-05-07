@@ -17,6 +17,7 @@ from psycopg.rows import dict_row
 connection_check_string = ""
 
 from flask import request
+import urllib.parse
 
 def execute_select_one(sql: str, passkey: str):
   try:
@@ -148,7 +149,7 @@ def update_oldest_url_app_appl(passkey):
       response = get_url_data(url)
       if not response:
         continue
-      update_description(url, response["title"], response["text"], passkey)
+      update_description(url, urllib.parse.quote(response["title"]), urllib.parse.quote(response["text"]), passkey)
       hrefs = response["hrefs"]
 
       for href in hrefs:
