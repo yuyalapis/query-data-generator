@@ -74,6 +74,7 @@ def execute_modify(sql: str, passkey: str):
 
 def get_url_data(url):
   response = requests.get(url)
+  response.encoding = response.apparent_encoding
   html     = response.text
   soup     = BeautifulSoup(html, 'html.parser')
 
