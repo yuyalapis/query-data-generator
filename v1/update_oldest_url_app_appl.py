@@ -133,6 +133,17 @@ def get_oldest_url_app_appl(passkey, interval=5):
     execute_modify(f"update url_app_appl set updated_at = CURRENT_TIMESTAMP where url = '{url}'", passkey)
   return url_data
 
+def get_all_top_300_url(passkey):
+  url_data = execute_select_all("""
+  select url_to, count(url_from) as score
+  from url_app_appl
+  inner join url_app_appl_suggested on url_app_appl.url = url_app_appl_suggested.url_to
+  group by url_to
+  order by score desc
+  limit 300
+  """)
+  return url_data
+
 def update_description(url, title, description, passkey):
   url_data = execute_select_one(f"select url from url_app_appl where url = '{url}'", passkey)
   if url_data:
