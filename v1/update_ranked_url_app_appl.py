@@ -162,7 +162,8 @@ def update_ranked_url_app_appl(passkey):
       if not response:
         continue
       update_description(url, urllib.parse.quote(response["title"]), urllib.parse.quote(response["text"]), passkey)
-      print(urllib.parse.quote(response["title"]))
+      print(response["title"])
+      print(urllib.parse.unquote(urllib.parse.quote(response["title"])))
      
   return {"status": 202, "url": url}
 
