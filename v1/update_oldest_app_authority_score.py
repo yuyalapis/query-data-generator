@@ -98,6 +98,9 @@ def save_oldest_app_authority_score():
 if __name__ == "__main__":
   print(len(PASSKEY) * "*")
   while True:
-    result = save_oldest_app_authority_score()
-    print(result)
-    time.sleep(1)
+    try:
+      result = save_oldest_app_authority_score()
+      print(result)
+      time.sleep(1)
+    except:
+      print("app authority score exception")
