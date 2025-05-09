@@ -102,5 +102,5 @@ if __name__ == "__main__":
       result = save_oldest_app_authority_score()
       print(result)
       time.sleep(1)
-except Exception as e:
+    except Exception as e:
       print("app authority score exception", e)
